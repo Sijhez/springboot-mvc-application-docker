@@ -7,6 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 @Entity
@@ -16,10 +19,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String lastname;
+    @NotEmpty
+    @Email // validacion de formato de correo por parte de jakarta EE
     private String email;
+    @NotEmpty
+    @Size(min = 4, max = 10)
     private String username;
+    @NotEmpty
     private String password;
 
 
